@@ -1,0 +1,1 @@
+## Hub de Acessibilidade Digital para análise e revisão de interfaces com base nas diretrizes WCAG.
