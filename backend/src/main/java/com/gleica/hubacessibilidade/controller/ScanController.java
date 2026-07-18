@@ -1,7 +1,7 @@
 package com.gleica.hubacessibilidade.controller;
 
 import com.gleica.hubacessibilidade.dto.ScanHtmlRequest;
-import com.gleica.hubacessibilidade.dto.ScanHtmlResponse;
+import com.gleica.hubacessibilidade.dto.ScanReport;
 import com.gleica.hubacessibilidade.service.HtmlAccessibilityAnalyzer;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class ScanController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ScanHtmlResponse scanHtml(
+    public ScanReport scanHtml(
             @Valid @RequestBody ScanHtmlRequest request
     ) {
         return analyzer.analyze(request.html());
