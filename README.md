@@ -7,6 +7,6 @@ em desenvolvimento.
 - [x] Criação do repositorio
 - [x] Configuração inicial do backend Spring Boot
 - [x] Endpoint de verificação de API
-- [ ] Motor de anãlise de acessibilidade
-- [ ] Interface React
-- [ ] Histórico de análises
+- [x] Motor de anãlise de acessibilidade
+- [x] Interface React
+- [x] Histórico de análises
