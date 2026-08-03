@@ -1,0 +1,3 @@
+DB_URL=jdbc:postgresql://localhost:5432/accessibility_hub
+DB_USER=accessibility_user
+DB_PASSWORD=troque_esta_senha
