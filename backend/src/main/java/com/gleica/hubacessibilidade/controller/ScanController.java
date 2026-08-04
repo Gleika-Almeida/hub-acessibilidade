@@ -2,7 +2,7 @@ package com.gleica.hubacessibilidade.controller;
 
 import com.gleica.hubacessibilidade.dto.ScanHtmlRequest;
 import com.gleica.hubacessibilidade.dto.ScanReport;
-import com.gleica.hubacessibilidade.service.HtmlAccessibilityAnalyzer;
+import com.gleica.hubacessibilidade.service.ScanService;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/scans")
 public class ScanController {
 
-    private final HtmlAccessibilityAnalyzer analyzer;
+    private final ScanService scanService;
 
     public ScanController(
-            HtmlAccessibilityAnalyzer analyzer
+            ScanService scanService
     ) {
-        this.analyzer = analyzer;
+        this.scanService = scanService;
     }
 
     @PostMapping(
@@ -30,6 +30,8 @@ public class ScanController {
     public ScanReport scanHtml(
             @Valid @RequestBody ScanHtmlRequest request
     ) {
-        return analyzer.analyze(request.html());
+        return scanService.analyzeHtml(
+                request.html()
+        );
     }
 }
