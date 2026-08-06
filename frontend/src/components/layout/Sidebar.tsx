@@ -1,50 +1,52 @@
-export function Sidebar() {
+export type AppPage = "analysis" | "history";
+
+interface SidebarProps {
+  activePage: AppPage;
+  onNavigate: (page: AppPage) => void;
+}
+
+export function Sidebar({ activePage, onNavigate }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="brand">
-        <div className="bran-icon" aria-hidden="true">
+        <div className="brand-icon" aria-hidden="true">
           A
         </div>
+
         <div>
-          <strong>A11Y Hub</strong>
+          <strong>Hub</strong>
           <span>Validador WCAG</span>
         </div>
       </div>
-      <nav className="main-navigation" aria-label="Navegação principal">
-        <a href="#dashboard">
-          <span aria-hidden="true">⌂</span>
-          Dashboard
-        </a>
 
-        <a href="#new-analysis" className="active" aria-current="page">
+      <nav className="main-navigation" aria-label="Navegação principal">
+        <button
+          type="button"
+          className={
+            activePage === "analysis"
+              ? "navigation-button active"
+              : "navigation-button"
+          }
+          aria-current={activePage === "analysis" ? "page" : undefined}
+          onClick={() => onNavigate("analysis")}
+        >
           <span aria-hidden="true">＋</span>
           Nova análise
-        </a>
+        </button>
 
-        <a href="#projects">
-          <span aria-hidden="true">□</span>
-          Projetos
-        </a>
-
-        <a href="#reports">
-          <span aria-hidden="true">▤</span>
-          Relatórios
-        </a>
-
-        <a href="#history">
+        <button
+          type="button"
+          className={
+            activePage === "history"
+              ? "navigation-button active"
+              : "navigation-button"
+          }
+          aria-current={activePage === "history" ? "page" : undefined}
+          onClick={() => onNavigate("history")}
+        >
           <span aria-hidden="true">◷</span>
           Histórico
-        </a>
-
-        <a href="#comparisons">
-          <span aria-hidden="true">⇄</span>
-          Comparações
-        </a>
-
-        <a href="#settings">
-          <span aria-hidden="true">⚙</span>
-          Configurações
-        </a>
+        </button>
       </nav>
 
       <div className="sidebar-footer">

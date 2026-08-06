@@ -732,6 +732,221 @@ textarea {
 .success-message p {
   margin: 0.35rem 0 0;
 }
+.navigation-button {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.8rem;
+  color: #cbd5e1;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 0.6rem;
+}
+
+.navigation-button:hover {
+  color: #ffffff;
+  background: rgb(255 255 255 / 8%);
+}
+
+.navigation-button.active {
+  color: #ffffff;
+  font-weight: 700;
+  background: var(--color-primary);
+}
+
+.secondary-button,
+.danger-button {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  border-radius: 0.55rem;
+}
+
+.secondary-button {
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  border: 1px solid var(--color-primary);
+}
+
+.secondary-button:hover {
+  background: var(--color-primary-light);
+}
+
+.danger-button {
+  color: #991b1b;
+  background: #ffffff;
+  border: 1px solid #dc2626;
+}
+
+.danger-button:hover {
+  color: #ffffff;
+  background: #b91c1c;
+}
+
+.danger-button:disabled,
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.history-section {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.history-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.history-heading h2 {
+  margin: 0;
+}
+
+.history-heading p {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+}
+
+.history-count {
+  margin-block: 1.5rem 1rem;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.history-card {
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow-card);
+}
+
+.history-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.history-card-header h3 {
+  margin: 0.3rem 0 0;
+}
+
+.history-id {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.history-score {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  color: var(--color-primary-dark);
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: var(--color-primary-light);
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+}
+
+.history-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-block: 1.25rem;
+}
+
+.history-data div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.history-data dt {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.history-data dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.history-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.history-loading,
+.history-empty {
+  padding: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+}
+
+.history-empty h3 {
+  margin-top: 0;
+}
+
+.history-empty p {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+}
+
+.history-detail-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.source-code-details {
+  padding: 1rem;
+  margin-top: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.8rem;
+}
+
+.source-code-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.source-code-details pre {
+  max-height: 420px;
+  padding: 1rem;
+  margin-bottom: 0;
+  overflow: auto;
+  color: #e2e8f0;
+  background: #111827;
+  border-radius: 0.6rem;
+}
 
 @media (max-width: 1050px) {
   .analysis-section {
@@ -772,6 +987,10 @@ textarea {
 
   .topbar {
     flex-direction: column;
+  }
+
+  .history-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -823,6 +1042,17 @@ textarea {
 
   .summary-grid,
   .issue-details {
+    grid-template-columns: 1fr;
+  }
+
+  .history-heading,
+  .history-detail-actions,
+  .history-card-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .history-data {
     grid-template-columns: 1fr;
   }
 }

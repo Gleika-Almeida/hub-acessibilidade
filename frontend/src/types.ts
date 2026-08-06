@@ -1,8 +1,4 @@
-export type Severity =
-  | "CRITICAL"
-  | "SERIOUS"
-  | "MODERATE"
-  | "MINOR";
+export type Severity = "CRITICAL" | "SERIOUS" | "MODERATE" | "MINOR";
 
 export interface AccessibilityIssue {
   ruleId: string;
@@ -28,4 +24,26 @@ export interface ScanReport {
   summary: ScanSummary;
   issues: AccessibilityIssue[];
   analyzedAt: string;
+}
+
+export type SourceType = "HTML" | "URL" | "CSS";
+
+export interface ScanHistoryItem {
+  id: number;
+  sourceType: SourceType;
+  score: number;
+  summary: ScanSummary;
+  analyzedAt: string;
+  createdAt: string;
+}
+
+export interface ScanHistoryDetail {
+  id: number;
+  sourceType: SourceType;
+  sourceValue: string | null;
+  score: number;
+  summary: ScanSummary;
+  issues: AccessibilityIssue[];
+  analyzedAt: string;
+  createdAt: string;
 }

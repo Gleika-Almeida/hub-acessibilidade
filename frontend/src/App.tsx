@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { AnalysisForm } from "./components/analysis/AnalysisForm";
 import { InformationCard } from "./components/analysis/InformationCard";
+import { HistoryView } from "./components/history/HistoryView";
 import { Header } from "./components/layout/Header";
-import { Sidebar } from "./components/layout/Sidebar";
+import { Sidebar, type AppPage } from "./components/layout/Sidebar";
 import { ScanReportView } from "./components/report/ScanReportView";
 import { scanHtml } from "./services/scanApi";
 import type { ScanReport } from "./types";
@@ -33,6 +34,8 @@ function App() {
   const [statusMessage, setStatusMessage] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [activePage, setActivePage] = useState<AppPage>("analysis");
 
   async function handleAnalyze() {
     setStatusMessage("");
@@ -69,30 +72,36 @@ function App() {
         Pular para o conteúdo principal
       </a>
 
-      <Sidebar />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
 
       <div className="page-container">
-        <Header />
+        <Header activePage={activePage} />
 
         <main id="main-content" className="main-content">
-          <section
-            className="analysis-section"
-            id="new-analysis"
-            aria-labelledby="analysis-title"
-          >
-            <AnalysisForm
-              htmlCode={htmlCode}
-              isLoading={isLoading}
-              statusMessage={statusMessage}
-              errorMessage={errorMessage}
-              onHtmlChange={setHtmlCode}
-              onAnalyze={handleAnalyze}
-            />
+          {activePage === "analysis" && (
+            <>
+              <section
+                className="analysis-section"
+                id="new-analysis"
+                aria-labelledby="analysis-title"
+              >
+                <AnalysisForm
+                  htmlCode={htmlCode}
+                  isLoading={isLoading}
+                  statusMessage={statusMessage}
+                  errorMessage={errorMessage}
+                  onHtmlChange={setHtmlCode}
+                  onAnalyze={handleAnalyze}
+                />
 
-            <InformationCard />
-          </section>
+                <InformationCard />
+              </section>
 
-          {report && <ScanReportView report={report} />}
+              {report && <ScanReportView report={report} />}
+            </>
+          )}
+
+          {activePage === "history" && <HistoryView />}
         </main>
       </div>
     </div>
